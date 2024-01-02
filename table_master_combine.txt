@@ -1,0 +1,16 @@
+SELECT
+o.Date AS order_date,
+pc.CategoryName AS category_name,
+p.ProdName AS product_name,
+p.Price AS product_price,
+o.Quantity AS order_qty,
+(p.Price * o.Quantity) AS total_sales,
+c.CustomerEmail AS cust_email,
+c.CustomerCity AS cust_city
+
+FROM
+task_5.Orders o
+JOIN task_5.Customers c ON o.CustomerID = c.CustomerID
+JOIN task_5.Products p ON o.ProdNumber = p.ProdNumber
+JOIN task_5.ProductCategory pc ON p.Category = pc.CategoryID
+ORDER BY order_date ASC;
